@@ -12,7 +12,9 @@ class App extends React.Component {
       blackMoves: 0,
       redMoves: 0,
       winner: null,
-      visible: false
+      visible: false,
+      playerRed: null,
+      playerBlack: null,
     }
 
   }
@@ -206,16 +208,43 @@ class App extends React.Component {
           document.getElementById(cell).style.backgroundColor = 'Red';
           let oldRed = this.state.redMoves;
           let newRed = oldRed + 1;
-          this.setState({
-            redMoves: newRed
-          })
+          debugger;
+          var playerName = null;
+          if (this.state.playerRed === null) {
+            do {
+               playerName = prompt("Red, what is your name?")
+          } while(playerName === null || playerName === "" || playerName === undefined );
+
+            this.setState({
+              redMoves: newRed,
+              playerRed: playerName
+            })
+          } else {
+            this.setState({
+              redMoves: newRed,
+            })
+          }
+
         } else {
+          playerName = null;
           document.getElementById(cell).style.backgroundColor = 'Black';
           let oldBlack = this.state.blackMoves;
           let newBlack = oldBlack + 1;
-          this.setState({
-            blackMoves: newBlack
-          })
+
+            if (this.state.playerBlack === null) {
+              do {
+                playerName = prompt("Black, what is your name?")
+            } while(playerName === null || playerName === "" || playerName === undefined);
+              this.setState({
+                blackMoves: newBlack,
+                playerBlack: playerName
+              })
+          } else {
+             this.setState({
+              blackMoves: newBlack,
+            })
+          }
+
         }
         var current = this.state.player;
         var newPlayer = current + 1;

@@ -34,7 +34,7 @@ class ScoreBoard extends React.Component {
           <div className="result">GAME OVER!</div>
           <div>
             <span id="span">
-              <p className="color" style={{color: this.props.stats.winner}}>{this.props.stats.winner} wins the game!</p>
+              <p className="color" style={{color: this.props.stats.winner}}>{this.props.stats.winner === 'black' ? this.props.stats.playerBlack : this.props.stats.playerRed} wins the game!</p>
             </span>
             {/* <p>{this.props.stats.winner} </p> */}
             <p>Red moves:{this.props.stats.redMoves}</p>
