@@ -42,13 +42,11 @@ class App extends React.Component {
   }
 
   checkTie(board) {
-    debugger;
     var tie = true;
     if (this.state.winner !== null) {
       return;
     } else {
       for (var spot in board) {
-        debugger;
         if (document.getElementById(board[spot]).style.backgroundColor === '') {
           return;
         }
@@ -62,14 +60,13 @@ class App extends React.Component {
   }
 
   checkDiag(cell) {
-    //1a
     let letters = ['x', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'x'];
     let color = document.getElementById(cell).style.backgroundColor;
     if (color === '' || color === null) {
       return;
     }
-    let row = cell.slice(0, 1); //1
-    let col = cell.slice(1); //a
+    let row = cell.slice(0, 1);
+    let col = cell.slice(1);
     let colStart = letters.indexOf(col);
     let count = 0;
     for (var i = row; i < row + 4; i++, colStart--) {
@@ -119,8 +116,8 @@ class App extends React.Component {
     if (color === '' || color === null) {
       return;
     }
-    let row = cell.slice(0, 1); //1
-    let col = cell.slice(1); //a
+    let row = cell.slice(0, 1);
+    let col = cell.slice(1);
 
     let count = 0;
     for (var i = row; i < row + 4; i++) {
@@ -204,7 +201,6 @@ class App extends React.Component {
     var col = e.target.id.slice(1);
     for (var i = 6; i > 0; i--) {
       var cell = i + col;
-      //console.log(cell)
       if (document.getElementById(cell).style.backgroundColor === '') {
         if (this.state.player % 2 === 0) {
           document.getElementById(cell).style.backgroundColor = 'Red';
